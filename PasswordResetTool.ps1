@@ -14,9 +14,9 @@
         <Button Name="clearBtn" Content="Clear" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="130,103,0,0"/>
         <DataGrid Name="resultsDataGrid" HorizontalAlignment="Left" Height="198" VerticalAlignment="Top" Width="285" Margin="50,128,0,0" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
-                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn Binding="{Binding GivenName}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn Binding="{Binding Surname}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn Binding="{Binding SamAccountName}" ClipboardContentBinding="{x:Null}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Name="resetBtn" Content="Reset" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="50,387,0,0"/>
@@ -41,9 +41,9 @@ $xamlCode.SelectNodes("//*[@Name]") | ForEach-Object { Set-Variable -Name ($_.Na
 # Import AD 
 Import-Module activedirectory -Cmdlet Get-ADUser
 
-$resultsDataGrid.Columns[0].Header = "First Name"
-$resultsDataGrid.Columns[1].Header = "Last Name"
-$resultsDataGrid.Columns[2].Header = "Student Number"
+$resultsDataGrid.Columns[0].Header = "GivenName"
+$resultsDataGrid.Columns[1].Header = "Surname"
+$resultsDataGrid.Columns[2].Header = "SamAccountName"
 
 
 $resultsDataGrid.Rows.Clear()
@@ -61,6 +61,10 @@ $searchBtn.Add_Click({
 	write-host = $result
 
 
+		
+$resultsDataGrid.AddChild([pscustomobject]$result)
+	
+	
 
 })
 
