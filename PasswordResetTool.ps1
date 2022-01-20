@@ -46,7 +46,7 @@ $resultsDataGrid.Columns[1].Header = "Surname"
 $resultsDataGrid.Columns[2].Header = "SamAccountName"
 
 
-$resultsDataGrid.Rows.Clear()
+
 
 
 
@@ -54,16 +54,18 @@ $resultsDataGrid.Rows.Clear()
 
 
 $searchBtn.Add_Click({
+
+	$resultsDataGrid.Items.Clear()
 	
 	$studentNumber = $studentNumberTextBox.Text + '*'
 
 	$result = (Get-ADUser -Filter "Name -like '$studentNumber'" | Select-Object -Property GivenName, Surname, SamAccountName)
 	write-host = $result
 
-
+	
 		
 $resultsDataGrid.AddChild([pscustomobject]$result)
-	
+
 	
 
 })
