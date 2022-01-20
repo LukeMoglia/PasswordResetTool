@@ -58,15 +58,17 @@ $searchBtn.Add_Click({
 	$resultsDataGrid.Items.Clear()
 	
 	$studentNumber = $studentNumberTextBox.Text + '*'
+	
 
+	
 	$result = (Get-ADUser -Filter "Name -like '$studentNumber'" | Select-Object -Property GivenName, Surname, SamAccountName)
 	write-host = $result
 
 	
-		
-$resultsDataGrid.AddChild([pscustomobject]$result)
-
-	
+	Foreach ($results in $result) 
+		{
+		$resultsDataGrid.AddChild([pscustomobject]$results)
+		}
 
 })
 
