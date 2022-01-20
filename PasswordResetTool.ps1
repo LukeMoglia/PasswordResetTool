@@ -46,13 +46,6 @@ $resultsDataGrid.Columns[1].Header = "Surname"
 $resultsDataGrid.Columns[2].Header = "SamAccountName"
 
 
-
-
-
-
-
-
-
 $searchBtn.Add_Click({
 
 	$resultsDataGrid.Items.Clear()
@@ -71,6 +64,29 @@ $searchBtn.Add_Click({
 		}
 
 })
+
+$clearBtn.Add_Click({
+
+	$resultsDataGrid.Items.Clear()
+	$studentNumberTextbox.Clear()
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Script End
 
