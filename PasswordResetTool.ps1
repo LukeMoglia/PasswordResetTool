@@ -12,7 +12,7 @@
         <Label Name="studentLabel" Content="Enter Student Number" HorizontalAlignment="Left" Margin="50,40,0,0" VerticalAlignment="Top"/>
         <Button Name="searchBtn" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="50,103,0,0"/>
         <Button Name="clearBtn" Content="Clear" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="130,103,0,0"/>
-        <DataGrid Name="resultsDataGrid" HorizontalAlignment="Left" Height="198" VerticalAlignment="Top" Width="285" Margin="50,128,0,0" AutoGenerateColumns="False">
+        <DataGrid Name="resultsDataGrid" HorizontalAlignment="Left" Height="198" VerticalAlignment="Top" Width="285" Margin="50,128,0,0" AutoGenerateColumns="False" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding GivenName}" ClipboardContentBinding="{x:Null}"/>
                 <DataGridTextColumn Binding="{Binding Surname}" ClipboardContentBinding="{x:Null}"/>
@@ -67,24 +67,16 @@ $searchBtn.Add_Click({
 
 $clearBtn.Add_Click({
 
-	$resultsDataGrid.Items.Clear()
-	$studentNumberTextbox.Clear()
-
+	
+	$value = $resultsDataGrid.SelectedItem
+	write-host = $value
+	
+	
+	#$resultsDataGrid.Items.Clear()
+	#$studentNumberTextbox.Clear()
+	
+	
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
