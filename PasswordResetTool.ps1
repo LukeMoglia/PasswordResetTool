@@ -69,7 +69,8 @@ $clearBtn.Add_Click({
 
 	
 	$value = $resultsDataGrid.SelectedItem
-	write-host = $value
+	
+	write-host = $value.SamAccountName
 	
 	
 	#$resultsDataGrid.Items.Clear()
