@@ -65,19 +65,35 @@ $searchBtn.Add_Click({
 
 })
 
-$clearBtn.Add_Click({
-
+$clearBtn.Add_Click({	
 	
-	$value = $resultsDataGrid.SelectedItem
-	
-	write-host = $value.SamAccountName
-	
-	
-	#$resultsDataGrid.Items.Clear()
-	#$studentNumberTextbox.Clear()
-	
+	$resultsDataGrid.Items.Clear()
+	$studentNumberTextbox.Clear()
 	
 })
+
+# Reseting a users password
+
+# Grab username from selected row
+
+#$value = $resultsDataGrid.SelectedItem
+#$username = $value.SamAccountName
+
+$resetBtn.Add_Click{
+	if($passwordTextbox = $confirmPasswordTextbox) {
+		$newPassword = $passwordTextbox 
+		write-host = $newPassword
+	}
+	else {
+		write-host = "passwords don't match"
+	}
+}
+
+
+
+# $newPassword = (Read-Host -Prompt "New Password" -AsSecureString)
+# Set-ADAccountPassword -Identity $User -NewPassword $NewPassword -Reset
+
 
 
 
